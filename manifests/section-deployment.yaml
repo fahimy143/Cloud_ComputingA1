@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: section-deployment
+  namespace: assignment
+  labels:
+    app: section
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: section
+  template:
+    metadata:
+      labels:
+        app: section
+    spec:
+      containers:
+        - name: section
+          image: ccuni/section-service-2025w
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 300m
+              memory: 256Mi
